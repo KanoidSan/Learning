@@ -1,4 +1,4 @@
-package com.kanoidsan.Learning;
+package com.kanoidsan.Learning.try01;
 
 import org.springframework.stereotype.Component;
 

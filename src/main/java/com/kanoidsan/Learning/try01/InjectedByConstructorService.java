@@ -1,6 +1,5 @@
-package com.kanoidsan.Learning;
+package com.kanoidsan.Learning.try01;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -8,7 +7,6 @@ public class InjectedByConstructorService {
 
     private HelloWorldService helloWorldService;
 
-    @Autowired
     public InjectedByConstructorService(HelloWorldService helloWorldService) {
         this.helloWorldService = helloWorldService;
     }
