@@ -35,4 +35,9 @@ public class HelloConfig {
     public HelloWorldService helloWorldServiceDeutsch(HelloWorldFactory factory){
         return factory.createHelloWorld("de");
     }
+
+    @Bean(name = "french")
+    public HelloWorldService helloWorldServiceFrench(HelloWorldFactory factory){
+        return factory.createHelloWorld("fr");
+    }
 }

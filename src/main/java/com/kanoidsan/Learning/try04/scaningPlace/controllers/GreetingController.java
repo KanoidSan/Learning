@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class GreetingController {
     private HelloWorldService helloWorldService;
     private HelloWorldService helloWorldServicePolish;
+    private HelloWorldService helloWorldServiceFrench;
 
     //to every implementation you need to add qualifier, if you don't do that,
     // Spring will not recognize which instance should he pass
@@ -20,8 +21,14 @@ public class GreetingController {
 
     @Autowired
     @Qualifier("helloWorldServicePolish")
-    public void setHelloWorldServicePolish(HelloWorldService helloWorldService2) {
-        this.helloWorldServicePolish = helloWorldService2;
+    public void setHelloWorldServicePolish(HelloWorldService helloWorldService) {
+        this.helloWorldServicePolish = helloWorldService;
+    }
+
+    @Autowired
+    @Qualifier("french")
+    public void setHelloWorldServiceFrench(HelloWorldService helloWorldService) {
+        this.helloWorldServiceFrench = helloWorldService;
     }
 
     public String sayHello(){
@@ -29,6 +36,7 @@ public class GreetingController {
 
         System.out.println(greeting);
         System.out.println(helloWorldServicePolish.getGreeting());
+        System.out.println(helloWorldServiceFrench.getGreeting());
 
         return greeting;
     }
