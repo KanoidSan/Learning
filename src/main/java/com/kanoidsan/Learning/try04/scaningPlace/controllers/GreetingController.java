@@ -20,7 +20,7 @@ public class GreetingController {
     }
 
     @Autowired
-    @Qualifier("hellorldServicePolish")
+    @Qualifier("helloWorldServicePolish")
     public void setHelloWorldServicePolish(HelloWorldService helloWorldService) {
         this.helloWorldServicePolish = helloWorldService;
     }
