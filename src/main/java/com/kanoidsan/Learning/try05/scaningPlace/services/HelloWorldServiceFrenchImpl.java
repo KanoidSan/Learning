@@ -1,4 +1,4 @@
-package com.kanoidsan.Learning.try04.scaningPlace.services;
+package com.kanoidsan.Learning.try05.scaningPlace.services;
 
 public class HelloWorldServiceFrenchImpl implements HelloWorldService {
     @Override

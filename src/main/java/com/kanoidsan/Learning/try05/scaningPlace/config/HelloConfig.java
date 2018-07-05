@@ -1,7 +1,7 @@
-package com.kanoidsan.Learning.try04.scaningPlace.config;
+package com.kanoidsan.Learning.try05.scaningPlace.config;
 
-import com.kanoidsan.Learning.try04.scaningPlace.services.HelloWorldFactory;
-import com.kanoidsan.Learning.try04.scaningPlace.services.HelloWorldService;
+import com.kanoidsan.Learning.try05.scaningPlace.services.HelloWorldFactory;
+import com.kanoidsan.Learning.try05.scaningPlace.services.HelloWorldService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

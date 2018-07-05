@@ -1,6 +1,6 @@
-package com.kanoidsan.Learning.try04.scaningPlace.controllers;
+package com.kanoidsan.Learning.try05.scaningPlace.controllers;
 
-import com.kanoidsan.Learning.try04.scaningPlace.services.HelloWorldService;
+import com.kanoidsan.Learning.try05.scaningPlace.services.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
