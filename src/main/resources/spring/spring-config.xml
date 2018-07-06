@@ -4,6 +4,9 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--importing xml configuration from other xml-->
+    <import resource="classpath*:spring/helloWorldConfig.xml"/>
+
     <context:component-scan base-package="com.kanoidsan.Learning.try05.scaningPlace"/>
     <bean id="greetingController" class="com.kanoidsan.Learning.try05.scaningPlace.controllers.GreetingController">
         <property name="helloWorldService" ref="helloWorldServiceDefault"/>
@@ -11,24 +14,4 @@
         <property name="helloWorldServiceFrench" ref="french"/>
     </bean>
 
-    <bean id="helloWorldFactory" class="com.kanoidsan.Learning.try05.scaningPlace.services.HelloWorldFactory"/>
-    <bean id="french" factory-bean="helloWorldFactory" factory-method="createHelloWorld">
-        <constructor-arg value="fr"/>
-    </bean>
-    <bean id="helloWorldServiceDeutsch" factory-bean="helloWorldFactory" factory-method="createHelloWorld">
-        <constructor-arg value="de"/>
-    </bean>
-    <bean id="helloWorldServicePolish" factory-bean="helloWorldFactory" factory-method="createHelloWorld">
-        <constructor-arg value="pl"/>
-    </bean>
-    <beans profile="english">
-        <bean id="helloWorldServiceDefault" factory-bean="helloWorldFactory" factory-method="createHelloWorld" primary="true">
-            <constructor-arg value="en"/>
-        </bean>
-    </beans>
-    <beans profile="spanish">
-        <bean id="helloWorldServiceDefault" factory-bean="helloWorldFactory" factory-method="createHelloWorld" primary="true">
-            <constructor-arg value="es"/>
-        </bean>
-    </beans>
 </beans>
