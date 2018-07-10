@@ -1,10 +1,13 @@
 package com.kanoidsan.Learning.controllers;
 
+import com.kanoidsan.Learning.domain.Product;
 import com.kanoidsan.Learning.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ProductController {
@@ -22,5 +25,31 @@ public class ProductController {
         model.addAttribute("products", productService.listAllProducts());
 
         return "products";
+    }
+
+    @RequestMapping("/product/{id}")
+    public String getProduct(@PathVariable  Integer id, Model model){
+
+        model.addAttribute("product", productService.getProductById(id));
+
+        return "product";
+    }
+
+    @RequestMapping("product/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model){
+        model.addAttribute("product", productService.getProductById(id));
+        return "productform";
+    }
+
+    @RequestMapping("/product/new")
+    public String newProduct(Model model){
+        model.addAttribute("product", new Product());
+        return "productform";
+    }
+
+    @RequestMapping(value = "/product", method = RequestMethod.POST)
+    public String saveOrUpdateProduct(Product product){
+        Product product1 = productService.saveOrUpdateProduct(product);
+        return "redirect:/product/"+product1.getId();
     }
 }
