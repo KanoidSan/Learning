@@ -3,13 +3,14 @@ package com.kanoidsan.Learning.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Created by jt on 11/6/15.
+ */
 @Controller
 public class IndexController {
 
-    //mapping request to index file
-    @RequestMapping("/")
+    @RequestMapping({"/", ""})
     public String index(){
         return "index";
     }
-
 }

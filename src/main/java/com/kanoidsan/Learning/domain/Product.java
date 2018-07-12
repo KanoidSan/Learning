@@ -2,7 +2,10 @@ package com.kanoidsan.Learning.domain;
 
 import java.math.BigDecimal;
 
-public class Product {
+/**
+ * Created by jt on 11/6/15.
+ */
+public class Product implements DomainObject{
     private Integer id;
     private String description;
     private BigDecimal price;
