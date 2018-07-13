@@ -89,6 +89,7 @@ public class CustomerControllerTest {
 
     @Test
     public void testSaveOrUpdate() throws Exception {
+        //creates temp object of Customer, with fields assigned
         Integer id = 1;
         Customer returnCustomer = new Customer();
         String firstName = "Micheal";
@@ -112,8 +113,12 @@ public class CustomerControllerTest {
         returnCustomer.setEmail(email);
         returnCustomer.setPhoneNumber(phoneNumber);
 
-        when(customerService.saveOrUpdate(Matchers.<Customer>any())).thenReturn(returnCustomer);
+        //when customerService is called with saveOrUpdate method invoked and it's argument is any object of
+        //(children, or itself) type Customer then it returns our temp object
+        when(customerService.saveOrUpdate(ArgumentMatchers.<Customer>any())).thenReturn(returnCustomer);
 
+        //then mock object of customerController class invokes post on "/customer" with parameters
+        //and expect to be redirected to "redirect:customer/show/1", after all that it checks again
         mockMvc.perform(post("/customer")
         .param("id", "1")
         .param("firstName", firstName)
@@ -138,11 +143,14 @@ public class CustomerControllerTest {
                 .andExpect(model().attribute("customer", hasProperty("email", is(email))))
                 .andExpect(model().attribute("customer", hasProperty("phoneNumber", is(phoneNumber))));
 
+        //getting arguments which were passed to customerService
         ArgumentCaptor<Customer> customerCaptor = ArgumentCaptor.forClass(Customer.class);
         verify(customerService).saveOrUpdate(customerCaptor.capture());
 
+        //saves it as object of Customer
         Customer boundCustomer = customerCaptor.getValue();
 
+        //checks if data was passed binded correctly
         assertEquals(id, boundCustomer.getId());
         assertEquals(firstName, boundCustomer.getFirstName());
         assertEquals(lastName, boundCustomer.getLastName());
